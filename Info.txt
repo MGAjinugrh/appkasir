@@ -38,3 +38,5 @@ Atribut : nmrPenjualan (Varchar) (PK)
 	  tglTransaksi (Datetime)
 
 Buat di phpmyadmin, terus push lagi ke branch ini
+
+Test
