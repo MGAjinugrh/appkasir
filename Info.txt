@@ -1,5 +1,0 @@
-clone projek ini ke htdoc kalian
-
-Update Tugas 12/03/2017 :
--Penambahan Folder Function untuk menampung fungsi-fungsi php di branch functions (Guruh) (done).
--Update tugas database (buat bambang & jihad) di branch bambang.
