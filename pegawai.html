@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Pegawai</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container-fluid">
+  <ul class="nav nav-pills" role="tablist">
+    <li class="active"><a href="home.html">Home</a></li>
+    <li class><a href="toko.html">About</a></li>
+    <li><a href="updatepegawai.html">Update</a></li>
+
+
+  </ul>
+  <h1 style="color:#3b5998" >Data Karyawan Toko Buku Gunung Agung</h1>
+  <p>Berikut adalah data lengkap karyawan Gunung Agung</p>
+  <div class="row">
+    <div class="col-sm-4 col-sm-push-8"
+
+
+    <form>
+      <!-- ini adalah fungsi serach pada kolom ukuran 4 -->
+
+    <div class="input-group">
+      <input type="text" class="form-control" placeholder="Cari Karyawan">
+      <div class="input-group-btn">
+        <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+      </div>
+    </div>
+    <br>
+
+    </form>
+
+  <form>
+    <!-- ini adalah fungsi mengisi biodata untuk menambahkan data pegawai pada kolom ukuran 4 -->
+
+    <div class="form-group">
+      <label for="usr">Nama</label>
+      <input type="text" class="form-control" placeholder="Nama lengkap" id="usr">
+    </div>
+    <div class="form-group">
+      <label for="user">Id pegawai</label>
+      <input type="text" class="form-control" placeholder="Id pegawai" id="usr">
+    </div>
+
+    <div class="form-group">
+      <label for="user">No.Telp</label>
+      <input type="text" class="form-control" placeholder="No.Telepon" id="usr">
+    </div>
+    <div class="form-group">
+      <label for="user">Alamat</label>
+      <input type="text" class="form-control" placeholder="Alamat"  id="usr">
+    </div>
+      <br>
+
+
+  </form>
+<div>  <p>Klik tombol dibawah ini untuk menambahkan data karyawan</p>
+  <button type="button" class="btn btn-primary">Tambahkan Data</button> </div>
+
+
+
+
+</div>
+
+    <div class="col-sm-8 col-sm-pull-4" style="background-color:#c9c9ff;" div class="container">
+  <h2 style="color:	#000000">Data Karyawan</h2>
+  <hr>
+
+  <div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Nama</th>
+        <th>Id pegawai</th>
+        <th>No.Telp</th>
+        <th>Alamat</th>
+        <th>Opsi</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Anna Marissa</td>
+        <td>01A3</td>
+        <td>0818777763</td>
+        <td>Jakarta</td>
+        <td> <button type="button" class="btn btn-warning">Hapus</button> </td>
+          <td> <a href="updatepegawai.html" class="btn btn-warning">Update</a> </td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Bambang Solehudin</td>
+        <td>12D4</td>
+        <td>0856765421</td>
+        <td>Depok</td>
+          <td> <button type="button" class="btn btn-warning">Hapus</button> </td>
+          <td> <a href="updatepegawai.html" class="btn btn-warning">Update</a> </td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+  </div>
+</div>
+
+</body>
+</html>
