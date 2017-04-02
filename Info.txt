@@ -1,40 +1,5 @@
-Sudah
+clone projek ini ke htdoc kalian
 
-12/03/2017
-
-Pull branch ini
-Struktur Database :
-
-1.Table : Toko
-Atribut : Nama (Varchar)
-	  alamat (text)
-	  notelp (varchar)
-
-2.Table : Pegawai
-Atribut : ID (Varchar) (PK)
-	  Nama (Varchar)
-	  alamat (text)
-	  notelp (varchar)
-
-3.Table : Barang
-Atribut : kdbarang (varchar) (PK)
-	  Nama (Varchar)
-	  hgjual (float)
-	  pajak (float)
-
-4.Table : Stok
-Atribut : idstok (varchar) (PK)
-	  kdbarang (varchar)
-	  kdtransaksi (varchar)
-	  jmlAwal (int)
-	  jmlUpdate (int)
-	  tglUpdateAwal (Datetime)
-	  tglUpdateAkhir (Datetime)
-
-5.Table : Penjualan
-Atribut : nmrPenjualan (Varchar) (PK)
-	  kdbarang (varchar)
-	  jmlStok (int)
-	  tglTransaksi (Datetime)
-
-Buat di phpmyadmin, terus push lagi ke branch ini
+Update Tugas 12/03/2017 :
+-Penambahan Folder Function untuk menampung fungsi-fungsi php di branch functions (Guruh) (done).
+-Update tugas database (buat bambang & jihad) di branch bambang.
