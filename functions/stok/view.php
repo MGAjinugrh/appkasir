@@ -1,3 +1,7 @@
+<?php
+include('../config.php');
+include('../../checklogin.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,14 +15,34 @@
 <body>
 
 <div class="container-fluid">
-
+  <h2>Aplikasi Kasir Toko Buku Gunung Agung</h2>
+  <br>
+  <?php if($_SESSION['jabatan'] == 1){?>
   <ul class="nav nav-pills" role="tablist">
-    <li class="active"><a href="home.html">Home</a></li>
-    <li class><a href="toko.html">About</a></li>
-    <li><a href="updatestok.html">Update</a></li>
+    <li><a href="../../index.php">Home</a></li>
+    <li><a href="../toko/view.php">About</a></li>
 
-
+    <li class="dropdown">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+    Master <span class="caret"></span></a>
+    <ul class="dropdown-menu" role="menu">
+      <li><a href="../pegawai/view.php">Pegawai</a></li>
+      <li><a href="../barang/view.php">Barang</a></li>
+      <li><a href="../stok/view.php">Stok</a></li>
+    </ul>
+    </li>
+    <li><a href="../transaksi/view.php">Transaksi</a></li>
+    <li><a href="../../logout.php">Logout</a></li>
   </ul>
+  <?php }else{ ?>
+  <ul class="nav nav-pills" role="tablist">
+    <li><a href="../../index.php">Home</a></li>
+    <li><a href="../toko/view.php">About</a></li>
+
+    <li><a href="../transaksi/view.php">Transaksi</a></li>
+    <li><a href="../../logout.php">Logout</a></li>
+  </ul>
+  <?php } ?>
 
   <h1 style="color:#3b5998" >Data Barang toko buku Gunung Agung</h1>
   <p>Berikut adalah stok barang yang tersedia</p>
