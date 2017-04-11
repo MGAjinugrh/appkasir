@@ -7,10 +7,29 @@ include('../../checklogin.php');
 <head>
   <title>Barang</title>
   <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <meta name="description" content="">
+  <meta name="author" content="">
+    <!-- Bootstrap Core CSS -->
+    <link href="../../assets/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="../../assets/css/plugins/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="../../assets/css/sb-admin.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="../../assets/css/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
 </head>
 <body>
 
@@ -46,52 +65,47 @@ include('../../checklogin.php');
   <h1 style="color:#3b5998" >Data Barang toko buku Gunung Agung</h1>
   <p>Berikut adalah data barang yang tersedia</p>
   <div class="row">
-    <div class="col-sm-4 col-sm-push-8"
+    <div class="col-sm-4 col-sm-push-8">
 
-
-    <form>
+  <form action="search.php" method="post">
       <!-- ini adalah fungsi serach pada kolom ukuran 4 -->
 
     <div class="input-group">
-      <input type="text" class="form-control" placeholder="Cari Barang">
+      <input type="text" class="form-control" placeholder="Cari Barang" name="nama" required>
       <div class="input-group-btn">
-        <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+        <input type="submit" value="Go" class="btn btn-default">
       </div>
     </div>
     <br>
 
-    </form>
+  </form>
 
-  <form>
+  <form action="input.php" method="post">
     <!-- ini adalah fungsi mengisi biodata untuk menambahkan data pegawai pada kolom ukuran 4 -->
+    <input type="text" name="action" value="1" hidden="true">
 
     <div class="form-group">
-      <label for="usr">Id barang</label>
-      <input type="text" class="form-control" placeholder="Id lengkap" id="usr">
+      <label>Kode barang</label>
+      <input type="text" class="form-control" placeholder="Kode Barang (11 Karakter)" name="kdbarang" onkeypress="return event.charCode >= 48 && event.charCode <= 57" required="true" maxlength="6">
     </div>
     <div class="form-group">
-      <label for="user">Nama barang</label>
-      <input type="text" class="form-control" placeholder="Nama barang" id="usr">
+      <label>Nama barang</label>
+      <input type="text" class="form-control" placeholder="Nama barang" name="nmbarang" required="true" maxlength="20">
     </div>
 
     <div class="form-group">
-      <label for="user">Harga satuan</label>
-      <input type="text" class="form-control" placeholder="Harga satuan" id="usr">
+      <label>Harga satuan</label>
+      <input type="text" class="form-control" placeholder="Harga satuan jual barang" name="hgjual" onkeypress="return event.charCode >= 48 && event.charCode <= 57" required="true">
     </div>
     <div class="form-group">
-      <label for="user">Pajak barang</label>
-      <input type="text" class="form-control" placeholder="Pajak barang"  id="usr">
+      <label>Pajak barang</label>
+      <input type="text" class="form-control" placeholder="Pajak per satuan barang"  name="pajak" onkeypress="return event.charCode >= 48 && event.charCode <= 57" required="true">
     </div>
       <br>
-
-
+    <div>
+      <input type="submit" value="Tambah Data" class="btn btn-success">
+    </div>
   </form>
-<div>  <p>Klik tombol dibawah ini untuk menambahkan data karyawan</p>
-  <button type="button" class="btn btn-primary">Tambahkan Data</button> </div>
-
-
-
-
 </div>
 
     <div class="col-sm-8 col-sm-pull-4" style="background-color:#adff00;" div class="container">
@@ -103,74 +117,61 @@ include('../../checklogin.php');
     <thead>
       <tr>
         <th>#</th>
-        <th>Id barang</th>
-        <th>Nama barang</th>
-        <th>Harga satuan</th>
-        <th>Pajak barang</th>
+        <th>Kode Barang</th>
+        <th>Nama Barang</th>
+        <th>Harga Jual</th>
+        <th>Pajak Barang</th>
         <th>Opsi</th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>1</td>
-        <td>171517</td>
-        <td>SMART POCKET FC1 D</td>
-        <td>rp.9.900,00</td>
-        <td>rp.1.100,00</td>
-        <td> <button type="button" class="btn btn-warning">Hapus</button> </td>
-        <td> <a href="updatebarang.html" class="btn btn-warning">Update</a> </td>
-      </tr>
-      <tr>
-        <td>2</td>
-        <td>181112</td>
-        <td>ENVELOPE AIR MAIL</td>
-        <td>rp.3.150,00</td>
-        <td>rp.450,00</td>
-        <td> <button type="button" class="btn btn-warning">Hapus</button> </td>
-        <td> <a href="updatebarang.html" class="btn btn-warning">Update</a> </td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td>250581</td>
-        <td>BUKU TULIS EB 58 L</td>
-        <td>rp.6.750,00</td>
-        <td>rp.750,00</td>
-        <td> <button type="button" class="btn btn-warning">Hapus</button> </td>
-        <td> <a href="updatebarang.html" class="btn btn-warning">Update</a> </td>
-      </tr>
-      <tr>
-        <td>4</td>
-        <td>250216</td>
-        <td>SAMPUL CKT KW/20LB</td>
-        <td>rp.5.310,00</td>
-        <td>rp.590,00</td>
-        <td> <button type="button" class="btn btn-warning">Hapus</button> </td>
-        <td> <a href="updatebarang.html" class="btn btn-warning">Update</a> </td>
-      </tr>
-      <tr>
-        <td>5</td>
-        <td>252950</td>
-        <td>PENCIL LUMOGRAPH 1</td>
-        <td>rp.4.950,00</td>
-        <td>rp.550,00</td>
-        <td> <button type="button" class="btn btn-warning">Hapus</button> </td>
-        <td> <a href="updatebarang.html" class="btn btn-warning">Update</a> </td>
-      </tr>
-      <tr>
-        <td>6</td>
-        <td>020018</td>
-        <td>PLASTIC BAG B MERA</td>
-        <td>rp.0</td>
-        <td>rp.0</td>
-        <td> <button type="button" class="btn btn-warning">Hapus</button> </td>
-        <td> <a href="updatebarang.html" class="btn btn-warning">Update</a> </td>
-      </tr>
+<?php
+  $barang = mysql_query("SELECT * FROM barang") or die(mysql_error());
+
+  $no = 1;
+  while($dbarang = mysql_fetch_array($barang)){
+    if($_SESSION['jabatan'] == 1){
+  ?>
+    <tr>
+      <td><?php echo $no++;?></td>
+      <td><?php echo $dbarang['kdbarang'];?></td>
+      <td><?php echo $dbarang['nmbarang'];?></td>
+      <td><?php echo "Rp. ".$dbarang['hgjual'].",00";?></td>
+      <td><?php echo "Rp. ".$dbarang['pajak'].",00";?></td>
+      <td><a href="update.php?kdbarang=<?php echo $dbarang['kdbarang'];?>" class="btn btn-warning">Update</a> <a href="delete.php?kdbarang=<?php echo $dbarang['kdbarang'];?>" class="btn btn-warning">Delete</a></td>
+    </tr>
+<?php
+    }else if($_SESSION['jabatan'] = 2){
+?>
+    <tr>
+      <td><?php echo $no++;?></td>
+      <td><?php echo $dbarang['kdbarang'];?></td>
+      <td><?php echo $dbarang['nmbarang'];?></td>
+      <td><?php echo "Rp. ".$dbarang['hgjual'].",00";?></td>
+      <td><?php echo "Rp. ".$dbarang['pajak'].",00";?></td>
+      <td> -Tidak Tersedia- </td>
+    </tr>
+<?php
+    }
+  }
+?>
     </tbody>
   </table>
   </div>
 
   </div>
 </div>
+    <!-- jQuery -->
+    <script src="../../assets/js/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../../assets/js/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="../../assets/js/plugins/metismenu/jquery.metisMenu.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="../../assets/js/sb-admin.js"></script>
 
 </body>
 </html>

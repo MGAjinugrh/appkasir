@@ -8,10 +8,29 @@ include('../../checklogin.php');
 <head>
   <title>Pegawai</title>
   <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <meta name="description" content="">
+  <meta name="author" content="">
+    <!-- Bootstrap Core CSS -->
+    <link href="../../assets/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="../../assets/css/plugins/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="../../assets/css/sb-admin.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="../../assets/css/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
 </head>
 <body>
 
@@ -48,9 +67,7 @@ include('../../checklogin.php');
   <h1 style="color:#3b5998" >Data Karyawan Toko Buku Gunung Agung</h1>
   <p>Berikut adalah data lengkap karyawan Gunung Agung</p>
   <div class="row">
-    <div class="col-sm-4 col-sm-push-8"
-
-  <div>
+    <div class="col-sm-4 col-sm-push-8">
   <form action="" method="post">
       <!-- ini adalah fungsi serach pada kolom ukuran 4 -->
 
@@ -133,6 +150,17 @@ $nama = mysql_real_escape_string($_POST['nama']);
 
   </div>
 </div>
+    <!-- jQuery -->
+    <script src="../../assets/js/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../../assets/js/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="../../assets/js/plugins/metismenu/metisMenu/dist/.min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="../../assets/js/sb-admin.js"></script>
 
 </body>
 </html>

@@ -12,7 +12,7 @@ $action = mysql_real_escape_string($_POST['action']);
 if($action == "1"){
 	$query = mysql_query("INSERT INTO pegawai (id,password,nama,alamat,notelp) VALUES('".$id."','".$password."','".$nama."','".$alamat."','".$notelp."')");
 }else if($action == "2"){
-	$query = mysql_query("query update");
+	$query = mysql_query("UPDATE pegawai SET nama='".$nama."', password='".$password."', alamat='".$alamat."', notelp='".$notelp."' WHERE id='".$id."'");
 }
 
 if($query){

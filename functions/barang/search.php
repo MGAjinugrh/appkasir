@@ -2,11 +2,10 @@
 include('../config.php');
 include('../../checklogin.php');
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Pegawai</title>
+  <title>Barang</title>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -63,18 +62,16 @@ include('../../checklogin.php');
     <li><a href="../../logout.php">Logout</a></li>
   </ul>
   <?php } ?>
-
-  <h1 style="color:#3b5998" >Data Karyawan Toko Buku Gunung Agung</h1>
-  <p>Berikut adalah data lengkap karyawan Gunung Agung</p>
+  <h1 style="color:#3b5998" >Data Barang toko buku Gunung Agung</h1>
+  <p>Berikut adalah data barang yang tersedia</p>
   <div class="row">
-    <div class="col-sm-4 col-sm-push-8"
+    <div class="col-sm-4 col-sm-push-8">
 
-  <div>
-  <form action="search.php" method="post">
+  <form action="" method="post">
       <!-- ini adalah fungsi serach pada kolom ukuran 4 -->
 
     <div class="input-group">
-      <input type="text" class="form-control" placeholder="Cari Karyawan" name="nama" required>
+      <input type="text" class="form-control" placeholder="Cari Barang" name="nama" required>
       <div class="input-group-btn">
         <input type="submit" value="Go" class="btn btn-default">
       </div>
@@ -86,34 +83,33 @@ include('../../checklogin.php');
   <form action="input.php" method="post">
     <!-- ini adalah fungsi mengisi biodata untuk menambahkan data pegawai pada kolom ukuran 4 -->
     <input type="text" name="action" value="1" hidden="true">
+
     <div class="form-group">
-      <label>ID Pegawai</label>
-      <input type="text" class="form-control" placeholder="11 karakter angka" name="id" maxlength="11"  onkeypress="return event.charCode >= 48 && event.charCode <= 57" required="true">
+      <label>Kode barang</label>
+      <input type="text" class="form-control" placeholder="Kode Barang (11 Karakter)" name="kdbarang" onkeypress="return event.charCode >= 48 && event.charCode <= 57" required="true" maxlength="6">
     </div>
     <div class="form-group">
-      <label>Password</label>
-      <input type="password" class="form-control" placeholder="Maks 50 karakter" maxlength="50" required name="password">
+      <label>Nama barang</label>
+      <input type="text" class="form-control" placeholder="Nama barang" name="nmbarang" required="true" maxlength="20">
+    </div>
+
+    <div class="form-group">
+      <label>Harga satuan</label>
+      <input type="text" class="form-control" placeholder="Harga satuan jual barang" name="hgjual" onkeypress="return event.charCode >= 48 && event.charCode <= 57" required="true">
     </div>
     <div class="form-group">
-      <label>Nama</label>
-      <input type="text" class="form-control" placeholder="Nama lengkap (Maks 25 karakter)" name="nama" maxlength="25" required="true">
+      <label>Pajak barang</label>
+      <input type="text" class="form-control" placeholder="Pajak per satuan barang"  name="pajak" onkeypress="return event.charCode >= 48 && event.charCode <= 57" required="true">
     </div>
-    <div class="form-group">
-      <label>No.Telp</label>
-      <input type="text" class="form-control" placeholder="No.Telepon" name="notelp" required="true" maxlength="15" onkeypress="return event.charCode >= 48 && event.charCode <= 57">
-    </div>
-    <div class="form-group">
-      <label>Alamat</label>
-      <textarea class="form-control" rows="3" name="alamat"></textarea>
-    </div>
-    <div class="form-group">
+      <br>
+    <div>
       <input type="submit" value="Tambah Data" class="btn btn-success">
     </div>
   </form>
 </div>
 
-    <div class="col-sm-8 col-sm-pull-4" style="background-color:#c9c9ff;" div class="container">
-  <h2 style="color:	#000000">Data Karyawan</h2>
+    <div class="col-sm-8 col-sm-pull-4" style="background-color:#adff00;" div class="container">
+  <h2 style="color:	#000000">Data barang</h2>
   <hr>
 
   <div class="table-responsive">
@@ -121,42 +117,45 @@ include('../../checklogin.php');
     <thead>
       <tr>
         <th>#</th>
-        <th>Nama</th>
-        <th>No.Telp</th>
-        <th>Alamat</th>
+        <th>Kode Barang</th>
+        <th>Nama Barang</th>
+        <th>Harga Jual</th>
+        <th>Pajak Barang</th>
         <th>Opsi</th>
       </tr>
     </thead>
     <tbody>
 <?php
-  $pegawai = mysql_query("SELECT * FROM pegawai WHERE id!=".$_SESSION['id']." AND jabatan !='1'") or die(mysql_error());
+$nama = mysql_real_escape_string($_POST['nama']);
+  $barang = mysql_query("SELECT * FROM barang WHERE nmbarang LIKE'%".$nama."%'") or die(mysql_error());
 
   $no = 1;
-  while($dpegawai = mysql_fetch_array($pegawai)){
+  while($dbarang = mysql_fetch_array($barang)){
     if($_SESSION['jabatan'] == 1){
   ?>
     <tr>
       <td><?php echo $no++;?></td>
-      <td><?php echo $dpegawai['nama'];?></td>
-      <td><?php echo $dpegawai['notelp'];?></td>
-      <td><?php echo $dpegawai['alamat'];?></td>
-      <td><a href="update.php?id=<?php echo $dpegawai['id'];?>" class="btn btn-warning">Update</a> <a href="delete.php?id=<?php echo $dpegawai['id'];?>" class="btn btn-warning">Delete</a></td>
+      <td><?php echo $dbarang['kdbarang'];?></td>
+      <td><?php echo $dbarang['nmbarang'];?></td>
+      <td><?php echo "Rp. ".$dbarang['hgjual'].",00";?></td>
+      <td><?php echo "Rp. ".$dbarang['pajak'].",00";?></td>
+      <td><a href="update.php?kdbarang=<?php echo $dbarang['kdbarang'];?>" class="btn btn-warning">Update</a> <a href="delete.php?kdbarang=<?php echo $dbarang['kdbarang'];?>" class="btn btn-warning">Delete</a></td>
     </tr>
 <?php
     }else if($_SESSION['jabatan'] = 2){
 ?>
     <tr>
       <td><?php echo $no++;?></td>
-      <td><?php echo $dpegawai['nama'];?></td>
-      <td><?php echo $dpegawai['notelp'];?></td>
-      <td><?php echo $dpegawai['alamat'];?></td>
+      <td><?php echo $dbarang['kdbarang'];?></td>
+      <td><?php echo $dbarang['nmbarang'];?></td>
+      <td><?php echo "Rp. ".$dbarang['hgjual'].",00";?></td>
+      <td><?php echo "Rp. ".$dbarang['pajak'].",00";?></td>
       <td> -Tidak Tersedia- </td>
     </tr>
 <?php
     }
   }
 ?>
-
     </tbody>
   </table>
   </div>
@@ -170,7 +169,7 @@ include('../../checklogin.php');
     <script src="../../assets/js/bootstrap.min.js"></script>
 
     <!-- Metis Menu Plugin JavaScript -->
-    <script src="../../assets/js/plugins/metismenu/jquery.metisMenu.js"></script>
+    <script src="../../assets/js/plugins/metismenu/metisMenu/dist/.min.js"></script>
 
     <!-- Custom Theme JavaScript -->
     <script src="../../assets/js/sb-admin.js"></script>
