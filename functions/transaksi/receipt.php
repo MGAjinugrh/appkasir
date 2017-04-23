@@ -74,21 +74,21 @@ include('../../checklogin.php');
 				echo "<td>ITEM	:</td>";
 				echo "<td style='text-align:right;'>".$dtransaksi['totaljml']."</td>";
 				echo "<td>NET	:</td>";
-				echo "<td style='text-align:right;'>".number_format($dtransaksi['biaya'],0,"","")."</td>";
+				echo "<td style='text-align:right;'>".number_format($dtransaksi['biaya'],0,"",".")."</td>";
 		?>
 		</tr>
 		<tr>
 			<?php
 				echo "<td>CASH</td>";
 				echo "<td>:</td>";
-				echo "<td colspan='2' style='text-align:right;'>".$dtransaksi['bayar']."</td>";
+				echo "<td colspan='2' style='text-align:right;'>".number_format($dtransaksi['bayar'],0,"",".")."</td>";
 			?>
 		</tr>
 		<tr>
 			<?php
 				echo "<td>CHANGE</td>";
 				echo "<td>:</td>";
-				echo "<td colspan='2' style='text-align:right;'>".$dtransaksi['kembali']."</td>";
+				echo "<td colspan='2' style='text-align:right;'>".number_format($dtransaksi['kembali'],0,"",".")."</td>";
 			} 
 			?>
 		</tr>	</table>
