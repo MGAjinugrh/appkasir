@@ -39,27 +39,59 @@ include('../../checklogin.php');
 	?>
 	<?php echo $dtoko['NmToko'];?><br><?php echo $dtoko['Alamat']."/Telp.".$dtoko['NoTelp'];
 	}?>
-	<br><br><?php echo date("Y/m/d-H:i"); ?>
+	<br>
+	<?php echo $_GET['kdtransaksi'];?>
+	<br>
+	<br>
+<?php echo date("Y/m/d-H:i"); ?>
 <?php
 	$pegawai = mysql_query("SELECT * FROM pegawai WHERE id='".$_SESSION['id']."'");
 
 	while($dpegawai = mysql_fetch_array($pegawai)){
 	?>
-	<?php echo $dpegawai['nama']."-".$dpegawai['id'];
+	<?php echo $dpegawai['nama']."-".substr($dpegawai['id'],0,3);
 	}?>
-	<br>=========================================<br>
-	=========================================<br><br>
 	<center>
-	<table border="1" padding="100">
+	<table>
+	<tr><td colspan="4">====================================</td></tr>
+		<?php
+			$penjualan = mysql_query("SELECT a.kdbrg, (SELECT nmbarang FROM barang WHERE kdbarang=a.kdbrg) AS nmbarang, a.jmlbrg, a.hgtotal FROM penjualan AS a WHERE kdtransaksi='".$_GET['kdtransaksi']."'") or die(mysql_error());
+			while ($dpenjualan = mysql_fetch_array($penjualan)) {
+				echo "<tr>";
+				echo "<td style='padding-left: 5px;'>".$dpenjualan['kdbrg']."</td>";
+				echo "<td style='padding-left: 5px;'>".$dpenjualan['nmbarang']."</td>";
+				echo "<td style='padding-left: 5px;'>".$dpenjualan['jmlbrg']."</td>";
+				echo "<td style='padding-left: 5px;'>".number_format($dpenjualan['hgtotal'],0,"","")."</td>";
+				echo "</tr>";
+			}
+		?>
+		<tr><td colspan="4" style="text-align: right; padding-top: 10px;">===============</td></tr>
 		<tr>
-			<td>ITEM</td>
-			<td>:</td>
-			<td></td>
-			<td>NET</td>
-			<td>:</td>
-			<td></td>
+		<?php
+			$transaksi = mysql_query("SELECT * FROM transaksi WHERE kdtransaksi='".$_GET['kdtransaksi']."'");
+
+			while ($dtransaksi = mysql_fetch_array($transaksi)) {
+				echo "<td>ITEM	:</td>";
+				echo "<td style='text-align:right;'>".$dtransaksi['totaljml']."</td>";
+				echo "<td>NET	:</td>";
+				echo "<td style='text-align:right;'>".number_format($dtransaksi['biaya'],0,"","")."</td>";
+		?>
 		</tr>
-	</table>
+		<tr>
+			<?php
+				echo "<td>CASH</td>";
+				echo "<td>:</td>";
+				echo "<td colspan='2' style='text-align:right;'>".$dtransaksi['bayar']."</td>";
+			?>
+		</tr>
+		<tr>
+			<?php
+				echo "<td>CHANGE</td>";
+				echo "<td>:</td>";
+				echo "<td colspan='2' style='text-align:right;'>".$dtransaksi['kembali']."</td>";
+			} 
+			?>
+		</tr>	</table>
 	</center>
 	TERIMA KASIH ATAS KUNJUNGAN ANDA<br>
 	BARANG YG SDH DIBELI TDK DAPAT DITUKAR<br>

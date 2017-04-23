@@ -56,7 +56,7 @@ if (!empty($_SESSION['id']))
                         <form role="form" action='otentikasi.php' method='post' name='process'>
                             <fieldset>
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="Your ID" name="id" type="text" autofocus="">
+                                    <input class="form-control" placeholder="Your ID" name="id" type="text" autofocus="" maxlength="11" onkeypress="return event.charCode >= 48 && event.charCode <= 57">
                                 </div>
                                 <div class="form-group">
                                     <input class="form-control" placeholder="Your Password" name="password" type="password" value="">

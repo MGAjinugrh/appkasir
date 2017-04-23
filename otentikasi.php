@@ -34,6 +34,7 @@ if(mysql_num_rows($q) == 1){
 		//buat session dengan nama id dengan isi nama id yang login
 	while ($sesi = mysql_fetch_array($q)) {
 		$_SESSION['id'] = $sesi['id'];
+		$_SESSION['nama'] = $sesi['nama'];
 		$_SESSION['jabatan'] = $sesi['jabatan'];
 		$_SESSION['status'] = $sesi['status'];
 	}
