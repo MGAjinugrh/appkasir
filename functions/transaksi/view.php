@@ -70,6 +70,7 @@ include('../../checklogin.php');
 			<div class="form-group">
 				<label>Kode Barang</label>
 				<select class="form-control" id="kdbarang" onchange="getharga(this.value)">
+				<option>--Please Select--</option>
 					<?php
 						$barang = mysql_query("SELECT * FROM barang") or die(mysql_error());
 
